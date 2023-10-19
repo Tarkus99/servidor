@@ -1,6 +1,5 @@
 <?php
 include("modelo.php");
-include("funciones.php");
 include("inicio.html");
 $base = new Base();
 $mensaje = "";
@@ -18,17 +17,18 @@ if (isset($_POST['enviado'])) {
                 $mensaje = $insertarPedido;
         }
         $insertarLinea = $linea->insertar($base);
-        if ($insertarLinea === true)
+        if ($insertarLinea === true) {
             $mensaje .= "Linea insertada con éxito.";
-        else
+            $base->commit();
+        } else
             $mensaje .= $insertarLinea;
-        $base->commit();
     } catch (Exception $e) {
         $base->rollback();
         $mensaje = $e->getMessage();
     }
     include("echos.php");
 } else {
+    include("funciones.php");
     include("formulario.php");
 }
 

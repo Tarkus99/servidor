@@ -167,7 +167,7 @@ class Pedido
     public static function getAll($con)
     {
         $result = $con->query('SELECT p.idPedido, p.fecha, pr.nombre, pr.precio, l.cantidad, (pr.precio*l.cantidad)
-                                FROM pedidos p INNER JOIN lineaspedidos l INNER JOIN productos pr 
+                                FROM pedidos p LEFT JOIN lineaspedidos l INNER JOIN productos pr 
                                 ON l.idProducto = pr.idProducto AND p.idPedido = l.idPedido 
                                 ORDER BY p.idPedido');
         return $result;

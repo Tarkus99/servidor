@@ -63,8 +63,7 @@ class Pedido
         $result = $con->link->prepare('SELECT * FROM pedidos WHERE idPedido = ?');
         $result->bindParam(1, $this->idPedido);
         $result->execute();
-        $a = $result->fetch(PDO::FETCH_BOTH);
-        return $a;
+        return $result->fetch(PDO::FETCH_BOTH);
     }
 
     function insertar($con)
