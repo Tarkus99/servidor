@@ -1,0 +1,10 @@
+Actividad 2.8 Validación de formularios
+Crear un programa en PHP que mostrará un formulario para rellenar: Nombre, Apellidos y
+Domicilio para validarlo, haremos 2 versiones.
+1.- En la primera versión, cuando enviamos el formulario comprobamos si está vacío algún
+campo, en cuyo caso se lanza un mensaje genérico de error "hay un campo vacío" y vuelve a
+aparecer el formulario. Sino se muestran los campos introducidos
+2.- En la segunda versión se comprueba para cada campo si está vacío y se muestra el error
+cuando se vuelve a mostrar el formulario al lado del campo erróneo. En los campos que no se
+quedaron vacíos aparecerá el anterior valor introducido. Para eso usaremos un array de
+errores y otro de valores introducidos
