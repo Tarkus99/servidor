@@ -24,5 +24,6 @@
             </tr>";
     }
     ?>
-</table>
+</table><br>
+<a href="salir.php">Cerrar sesión</a>
 <?php include("fin.html"); ?>
