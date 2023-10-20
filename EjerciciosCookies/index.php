@@ -5,7 +5,8 @@ if (!isset($_COOKIE["nombre"])) {
             $nombre = "Paco";
             setcookie("nombre", $nombre, 0, "/");
             echo "Usuario registrado correctamente.";
-        }
+        } else
+            echo "El usuario y contraseña son incorrectos";
     } else {
         include("formulario.html");
     }
