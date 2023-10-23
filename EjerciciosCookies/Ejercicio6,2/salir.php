@@ -1,3 +1,3 @@
 <?php
-setcookie('nombre', '', time() - 1, '/');
+$_SESSION['nombre'] = null;
 header("Location: index.php");

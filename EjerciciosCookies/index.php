@@ -10,6 +10,5 @@ if (!isset($_COOKIE["nombre"])) {
     } else {
         include("formulario.html");
     }
-} else {
+} else
     echo "Hola " . $_COOKIE['nombre'];
-}

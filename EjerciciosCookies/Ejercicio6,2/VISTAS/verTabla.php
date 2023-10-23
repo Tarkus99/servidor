@@ -1,5 +1,7 @@
-<?php include("inicio.html"); ?>
-<h1>Bienvenido <?= $actualUser; ?></h1>
+<?php
+include("inicio.html");
+echo "<h1>Hola de nuevo " . $_SESSION['nombre'] . "</h1>"; ?>
+
 <table>
     <thead>
         <tr>
@@ -25,4 +27,5 @@
     }
     ?>
 </table><br>
+<a href="salir.php">Cerrar sesión</a>
 <?php include("fin.html"); ?>
