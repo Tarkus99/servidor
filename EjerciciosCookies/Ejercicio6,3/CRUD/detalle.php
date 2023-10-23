@@ -10,6 +10,6 @@ $mensaje = "";
 foreach ($result as $key => $value) {
     $mensaje .= "$key: $value<br>";
 }
-
+$mensaje .= "<br><a href='../index.php'></a>";
 include("../echos.php");
 include("../VISTAS/fin.html");

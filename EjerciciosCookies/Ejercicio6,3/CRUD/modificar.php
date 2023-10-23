@@ -16,7 +16,7 @@ if (isset($_POST['enviado'])) {
     array_pop($datoscliente);
 
     if ($cl->modificar($bd->link, ...$datoscliente))
-        $mensaje = "Cliente modificado con éxito";
+        $mensaje = "Cliente modificado con éxito.<br><a href='../index.php'></a>";
     else
         $mensaje = "Error en la inserción";
 } else

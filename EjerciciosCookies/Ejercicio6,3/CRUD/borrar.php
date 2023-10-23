@@ -8,7 +8,7 @@ $cl = new Cliente($dni);
 $result = $cl->deleteById($bd->link);
 
 if ($result)
-    $mensaje = "Eliminado el usuario correctamente.";
+    $mensaje = "Eliminado el usuario correctamente.<br><a href='../index.php'></a>";
 
 include("../echos.php");
 include("../VISTAS/fin.html");

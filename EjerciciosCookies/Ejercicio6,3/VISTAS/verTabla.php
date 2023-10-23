@@ -1,5 +1,5 @@
 <?php include("inicio.html"); ?>
-<h1>Bienvenido <?= $actualUser; ?></h1>
+<h1>Hola de nuevo <?= $_COOKIE['nombre']; ?></h1>
 <table>
     <thead>
         <tr>

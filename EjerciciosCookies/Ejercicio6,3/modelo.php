@@ -87,12 +87,11 @@ class Cliente
 
     function validar($con)
     {
-        $result = $con->prepare("SELECT * FROM clientes where dniCliente = :dni and pwd = :pwd");
-        $result->bindValue(':dni', $this->dni);
-        $result->bindValue(':pwd', $this->pass);
-
-        $result->execute();
-        return $result->fetch(PDO::FETCH_ASSOC);
+        $result = $this->getById($con);
+        if ($result && $result['pwd'] == $this->pass) {
+            return $result;
+        }
+        return false;
     }
     function deleteById($con)
     {
