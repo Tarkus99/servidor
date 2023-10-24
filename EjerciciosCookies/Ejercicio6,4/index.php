@@ -6,13 +6,13 @@ spl_autoload_register(function ($clase) {
 });
 include 'funciones/funciones.php';
 $bd = new Base();
+$_SESSION['linea'] = 0;
 if (isset($_POST['enviado'])) {
     $newPedido = new Pedido($_POST['idPedido'], $_POST['fecha'], $_POST['dniCliente']);
     if ($newPedido->existe($bd->link)) {
         $mensaje = "Ya existe ese pedido";
     } else {
         $newPedido->guardar();
-        $_SESSION['linea'] = 0;
         var_dump($_SESSION);
         $mensaje = "<a href='lineas.php'>Saltar al siguiente paso.</a>";
     }
