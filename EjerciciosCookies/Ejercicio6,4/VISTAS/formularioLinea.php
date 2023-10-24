@@ -1,4 +1,4 @@
-<table>
+<table style="text-align: center;">
     <thead>
         <tr>
             <th>Pedido</th>
@@ -20,4 +20,5 @@
             </td>
         </tr>
     </form>
-</table>
+</table><br>
+<a href='terminar.php'>Terminar</a>

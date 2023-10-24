@@ -10,3 +10,18 @@
     $str .= "</select><br>";
     return $str;
 }
+
+function mostrarDetalle(): string
+{
+    $str = "";
+
+    foreach ($_SESSION['array_linea'] as $item) {
+        $str .= "<tr>";
+        $str .= "<td>" . $_SESSION['idPedido'] . "</td>";
+        $str .= "<td>" . $item['numLinea'] . "</td>";
+        $str .= "<td>" . $item['idProducto'] . "</td>";
+        $str .= "<td>" . $item['cantidad'] . "</td>";
+        $str .= "</tr>";
+    }
+    return $str;
+}

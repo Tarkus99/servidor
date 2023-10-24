@@ -13,7 +13,6 @@ if (isset($_POST['enviado'])) {
         $mensaje = "Ya existe ese pedido";
     } else {
         $newPedido->guardar();
-        var_dump($_SESSION);
         $mensaje = "<a href='lineas.php'>Saltar al siguiente paso.</a>";
     }
     include 'VISTAS/mensaje.php';

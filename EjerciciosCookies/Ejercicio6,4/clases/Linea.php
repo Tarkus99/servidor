@@ -28,11 +28,10 @@ class Linea
 
     static function insertarTodas($con)
     {
-        $max = 1;
-        foreach ($_SESSION['lineas'] as $linea) {
-            $result = $con->prepare('INSERT INTO lineaspedidos values(?,?,?,?)');
-            $result->bind_param(1, $linea['idPedido']);
-            $result->bind_param(2, $linea['idProducto']);
+        $result = $con->prepare('INSERT INTO lineaspedidos values(?,?,?,?)');
+        foreach ($_SESSION['array_linea'] as $linea) {
+            $result->bindParam(1, $_SESSION['idPedido']);
+            $result->bindParam(2, $linea['idProducto']);
             $result->bindParam(3, $linea['cantidad']);
             $result->bindParam(4, ($linea['numLinea']));
             $result->execute();

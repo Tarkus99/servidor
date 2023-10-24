@@ -9,7 +9,7 @@ class Pedido
     private $matriculaRepartidor;
     private $dniCliente;
 
-    function __construct($id, $fecha, $dniCliente, $dirEntrega = ' ', $nTarjeta = null, $fechaCaducidad = null, $matriculaRepartidor = null)
+    function __construct($id, $fecha, $dniCliente, $dirEntrega = '', $nTarjeta = null, $fechaCaducidad = null, $matriculaRepartidor = null)
     {
         $this->id = $id;
         $this->fecha = $fecha;
@@ -36,7 +36,8 @@ class Pedido
         return $result->fetch(PDO::FETCH_BOTH);
     }
 
-    function guardar(){
+    function guardar()
+    {
         $_SESSION['idPedido'] = $this->id;
         $_SESSION['fecha'] = $this->fecha;
         $_SESSION['cliente'] = $this->dniCliente;
@@ -44,14 +45,12 @@ class Pedido
 
     function insertar($con)
     {
-        $result = $con->link->prepare("INSERT INTO pedidos values(?,?,?,?,?,?,?)");
+        $result = $con->prepare("INSERT INTO pedidos (idPedido, fecha, dniCliente, dirEntrega) values(?,?,?,?)");
         $result->bindParam(1, $this->id);
         $result->bindParam(2, $this->fecha);
-        $result->bindParam(3, $this->dirEntrega);
-        $result->bindParam(4, $this->nTarjeta);
-        $result->bindParam(5, $this->fechaCaducidad);
-        $result->bindParam(6, $this->matriculaRepartidor);
-        $result->bindParam(7, $this->dniCliente);
+        $result->bindParam(3, $this->dniCliente);
+        $result->bindParam(4, $this->dirEntrega);
+
         $result->execute();
         return $result->rowCount();
     }
