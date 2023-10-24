@@ -11,9 +11,9 @@ if (isset($_POST['enviado'])) {
     if ($newPedido->existe($bd->link)) {
         $mensaje = "Ya existe ese pedido";
     } else {
-        $_SESSION['idPedido'] = $newPedido->idPedido;
-        $_SESSION['fecha'] = $newPedido->fecha;
-        $_SESSION['cliente'] = $newPedido->dniCliente;
+        $newPedido->guardar();
+        $_SESSION['linea'] = 0;
+        var_dump($_SESSION);
         $mensaje = "<a href='lineas.php'>Saltar al siguiente paso.</a>";
     }
     include 'VISTAS/mensaje.php';

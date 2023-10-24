@@ -19,6 +19,26 @@ class Linea
         return $result;
     }
 
+    function guardar()
+    {
+        $_SESSION['linea_idPedido'] = $this->idPedido;
+        $_SESSION['linea_idProducto'] = $this->idProducto;
+        $_SESSION['linea_cantidad'] = $this->cantidad;
+    }
+
+    static function insertarTodas($con)
+    {
+        $max = 1;
+        foreach ($_SESSION['lineas'] as $linea) {
+            $result = $con->prepare('INSERT INTO lineaspedidos values(?,?,?,?)');
+            $result->bind_param(1, $linea['idPedido']);
+            $result->bind_param(2, $linea['idProducto']);
+            $result->bindParam(3, $linea['cantidad']);
+            $result->bindParam(4, ($linea['numLinea']));
+            $result->execute();
+            return $result;
+        }
+    }
 
     function getCount($con)
     {

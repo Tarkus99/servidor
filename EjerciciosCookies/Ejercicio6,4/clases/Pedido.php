@@ -36,6 +36,12 @@ class Pedido
         return $result->fetch(PDO::FETCH_BOTH);
     }
 
+    function guardar(){
+        $_SESSION['idPedido'] = $this->id;
+        $_SESSION['fecha'] = $this->fecha;
+        $_SESSION['cliente'] = $this->dniCliente;
+    }
+
     function insertar($con)
     {
         $result = $con->link->prepare("INSERT INTO pedidos values(?,?,?,?,?,?,?)");
