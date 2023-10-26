@@ -11,7 +11,7 @@ class Producto
     {
         $result = $con->prepare('SELECT * FROM productos');
         $result->execute();
-        return $result->fetchAll();
+        return $result->fetchAll(PDO::FETCH_BOTH);
     }
     function getById($con)
     {

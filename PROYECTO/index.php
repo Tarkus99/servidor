@@ -1,2 +1,2 @@
 <?php
-header("Location: servicioProductos/service.php");
+header("Location: vistas/prueba.html");
