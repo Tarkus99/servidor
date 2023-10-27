@@ -6,7 +6,7 @@
     private $pass;
     private $direccion;
 
-    public function __construct($dni, $pass = null, $nombre = null, $direccion = null, $email = null)
+    public function __construct($email, $pass = null, $dni = null, $nombre = null, $direccion = null)
     {
         $this->dni = $dni;
         $this->nombre = $nombre;
@@ -37,7 +37,14 @@
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function getById($con)
+    function getByEmail($con)
+    {
+        $result = $con->prepare("SELECT * FROM clientes where email = :email");
+        $result->bindParam(':email', $this->email);
+        $result->execute();
+        return $result->fetch(PDO::FETCH_ASSOC);
+    }
+    function getByDni($con)
     {
         $result = $con->prepare("SELECT * FROM clientes where dniCliente = :dni");
         $result->bindParam(':dni', $this->dni);
@@ -45,10 +52,10 @@
         return $result->fetch(PDO::FETCH_ASSOC);
     }
 
-    function validar($con)
+    function isRegistered($con)
     {
-        $result = $this->getById($con);
-        if ($result && $result['pwd'] == $this->pass) {
+        $result = $this->getByEmail($con);
+        if ($result && password_verify($this->pass, $result['pwd'])) {
             return $result;
         }
         return false;
@@ -56,9 +63,10 @@
 
     function insert($con)
     {
-        $result = $con->prepare("INSERT INTO clientes values ('$this->dni', '$this->nombre', '$this->direccion', '$this->email', '$this->pass')");
+        $hash = password_hash($this->pass, PASSWORD_DEFAULT);
+        $result = $con->prepare("INSERT INTO clientes values ('$this->dni', '$this->nombre', '$this->direccion', '$this->email', '$hash')");
         $result->execute();
-        return $result;
+        return $result->rowCount();
     }
     function deleteById($con)
     {

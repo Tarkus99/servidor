@@ -1,2 +1,2 @@
 <?php
-header("Location: vistas/prueba.html");
+header("Location: controlers/index.php");

@@ -19,6 +19,6 @@ class Producto
         $result = $con->prepare('SELECT * FROM productos where idProducto = :id');
         $result->bindParam(':id', $this->idProducto);
         $result->execute();
-        return $result;
+        return $result->fetch(PDO::FETCH_ASSOC);
     }
 }
